@@ -15,13 +15,6 @@ class Search extends React.Component {
     };
   }
 
-  async componentDidMount() {
-    const { pesquisaAtiva } = this.state;
-    if (pesquisaAtiva) {
-      await this.exibirAlbuns();
-    }
-  }
-
 coletaDados = ({ target }) => {
   const { name, value } = target;
   this.setState(
@@ -52,13 +45,15 @@ exibirAlbuns = () => {
   const { albuns } = this.state;
   return albuns.map((item) => (
     <div key={ item.collectionId }>
-      {item.artistName}
-      {item.artworkUrl100}
-      {item.collectionName}
+      <p>{item.artistName}</p>
+      <img src={ item.artworkUrl100 } alt="capa" />
+      <p>{item.collectionName}</p>
       <Link
         data-testid={ `link-to-album-${item.collectionId}` }
         to={ `/album/${item.collectionId}` }
-      />
+      >
+        {item.collectionName}
+      </Link>
     </div>
   ));
 }
