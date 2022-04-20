@@ -29,10 +29,14 @@ class Album extends React.Component {
 
   exibirMusicas = (param) => {
     const apenasMusicas = param.filter((item, index) => index !== 0);
-    console.log(apenasMusicas);
     return apenasMusicas.map((item) => (
       <div key={ item.trackName }>
-        <MusicCard nomeMusica={ item.trackName } audioMusica={ item.previewUrl } />
+        <MusicCard
+          nomeMusica={ item.trackName }
+          audioMusica={ item.previewUrl }
+          trackId={ item.trackId }
+          objeto={ item }
+        />
       </div>
     ));
   }
@@ -47,7 +51,6 @@ class Album extends React.Component {
           : (
             <div>
               <section>
-                {console.log(musicas[0].artistName)}
                 <h1 data-testid="artist-name">{musicas[0].artistName}</h1>
                 <p data-testid="album-name">{musicas[0].collectionName}</p>
               </section>
