@@ -13,13 +13,12 @@ class MusicCard extends React.Component {
   }
 
 coletaCheck = ({ target }) => {
-  const { name, checked } = target;
-  this.setState({ [name]: checked });
-}
-
-coletaDados = (objeto) => {
+  const { name } = target;
+  const { objeto } = this.props;
+  const value = target.checked;
+  this.setState({ [name]: value });
   const { favorita } = this.state;
-  if (favorita) {
+  if (!favorita) {
     this.setState({ loading: true }, async () => {
       await addSong(objeto);
       this.setState({ loading: false });
@@ -28,8 +27,8 @@ coletaDados = (objeto) => {
 }
 
 render() {
-  const { loading } = this.state;
-  const { nomeMusica, audioMusica, trackId, objeto } = this.props;
+  const { loading, favorita } = this.state;
+  const { nomeMusica, audioMusica, trackId } = this.props;
   return (loading ? <Carregando />
     : (
       <div>
@@ -46,9 +45,9 @@ render() {
           <input
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
+            checked={ favorita }
             name="favorita"
-            onChange={ this.coletaDados(objeto) }
-            checked={ this.coletaCheck }
+            onChange={ this.coletaCheck }
             id={ trackId }
           />
         </label>

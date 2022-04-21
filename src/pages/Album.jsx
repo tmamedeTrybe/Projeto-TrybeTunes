@@ -30,7 +30,7 @@ class Album extends React.Component {
   exibirMusicas = (param) => {
     const apenasMusicas = param.filter((item, index) => index !== 0);
     return apenasMusicas.map((item) => (
-      <div key={ item.trackName }>
+      <div key={ item.trackId }>
         <MusicCard
           nomeMusica={ item.trackName }
           audioMusica={ item.previewUrl }
