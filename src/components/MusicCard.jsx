@@ -64,7 +64,7 @@ MusicCard.propTypes = {
   nomeMusica: PropTypes.string.isRequired,
   audioMusica: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  objeto: PropTypes.objectOf(PropTypes.object()).isRequired, // https://github.com/jsx-eslint/eslint-plugin-react/issues/2079
+  objeto: PropTypes.objectOf().isRequired, // https://github.com/jsx-eslint/eslint-plugin-react/issues/2079
 
 };
 
