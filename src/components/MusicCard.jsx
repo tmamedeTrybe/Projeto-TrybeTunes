@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
 
 class MusicCard extends React.Component {
@@ -9,7 +9,13 @@ class MusicCard extends React.Component {
     this.state = {
       loading: false,
       favorita: false,
+      listaFavoritas: [],
     };
+  }
+
+  async componentDidMount() {
+    const favoriteSongs = await getFavoriteSongs();
+    this.setState({ listaFavoritas: favoriteSongs });
   }
 
 coletaCheck = ({ target }) => {
@@ -26,8 +32,16 @@ coletaCheck = ({ target }) => {
   }
 }
 
+renderizaFavorita = () => {
+  const { listaFavoritas, favorita } = this.state;
+  const { trackId } = this.props;
+  if (listaFavoritas.some((item) => item.trackId === trackId)) {
+    return true;
+  } return favorita;
+}
+
 render() {
-  const { loading, favorita } = this.state;
+  const { loading } = this.state;
   const { nomeMusica, audioMusica, trackId } = this.props;
   return (loading ? <Carregando />
     : (
@@ -45,7 +59,7 @@ render() {
           <input
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
-            checked={ favorita }
+            checked={ this.renderizaFavorita() }
             name="favorita"
             onChange={ this.coletaCheck }
             id={ trackId }
