@@ -85,7 +85,20 @@ render() {
           <p>
             {`Resultado de álbuns de: ${pesquisaAtual}` }
           </p>
-          {albuns.length > 0 ? this.exibirAlbuns() : (
+          {albuns.length > 0 ? (
+            albuns.map((item) => (
+              <div key={ item.collectionId }>
+                <p>{item.artistName}</p>
+                <img src={ item.artworkUrl100 } alt="capa" />
+                <Link
+                  data-testid={ `link-to-album-${item.collectionId}` }
+                  to={ `/album/${item.collectionId}` }
+                >
+                  <p>{item.collectionName}</p>
+                </Link>
+              </div>
+            ))
+          ) : (
             <span>Nenhum álbum foi encontrado</span>
           )}
         </section>

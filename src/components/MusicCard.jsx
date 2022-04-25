@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
 
 class MusicCard extends React.Component {
@@ -8,7 +8,7 @@ class MusicCard extends React.Component {
     super();
     this.state = {
       loading: false,
-      favorita: false,
+      favorita: '',
       listaFavoritas: [],
     };
   }
@@ -16,6 +16,11 @@ class MusicCard extends React.Component {
   async componentDidMount() {
     const favoriteSongs = await getFavoriteSongs();
     this.setState({ listaFavoritas: favoriteSongs });
+    const { listaFavoritas } = this.state;
+    const { trackId } = this.props;
+    if (listaFavoritas.some((item) => item.trackId === trackId)) {
+      this.setState({ favorita: true });
+    }
   }
 
 coletaCheck = ({ target }) => {
@@ -25,9 +30,14 @@ coletaCheck = ({ target }) => {
   this.setState({ [name]: value });
   const { favorita } = this.state;
   if (!favorita) {
-    this.setState({ loading: true }, async () => {
+    this.setState({ loading: true, favorita: true }, async () => {
       await addSong(objeto);
       this.setState({ loading: false });
+    });
+  } else if (favorita) {
+    this.setState({ loading: true }, async () => {
+      await removeSong(objeto);
+      this.setState({ loading: false, favorita: false });
     });
   }
 }
@@ -41,7 +51,7 @@ renderizaFavorita = () => {
 }
 
 render() {
-  const { loading } = this.state;
+  const { loading, favorita } = this.state;
   const { nomeMusica, audioMusica, trackId } = this.props;
   return (loading ? <Carregando />
     : (
@@ -59,7 +69,7 @@ render() {
           <input
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
-            checked={ this.renderizaFavorita() }
+            checked={ favorita }
             name="favorita"
             onChange={ this.coletaCheck }
             id={ trackId }
