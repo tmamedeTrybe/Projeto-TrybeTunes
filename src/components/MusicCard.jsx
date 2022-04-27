@@ -25,9 +25,9 @@ class MusicCard extends React.Component {
 
 coletaCheck = ({ target }) => {
   const { name } = target;
-  const { objeto } = this.props;
   const value = target.checked;
   this.setState({ [name]: value });
+  const { objeto } = this.props;
   const { favorita } = this.state;
   if (!favorita) {
     this.setState({ loading: true, favorita: true }, async () => {
@@ -40,14 +40,6 @@ coletaCheck = ({ target }) => {
       this.setState({ loading: false, favorita: false });
     });
   }
-}
-
-renderizaFavorita = () => {
-  const { listaFavoritas, favorita } = this.state;
-  const { trackId } = this.props;
-  if (listaFavoritas.some((item) => item.trackId === trackId)) {
-    return true;
-  } return favorita;
 }
 
 render() {
