@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Carregando from './Carregando';
 import MusicCardFav from '../components/MusicCardFav';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import styles from './Favorites.module.css';
 
 class Favorites extends React.Component {
   constructor() {
@@ -34,7 +35,8 @@ class Favorites extends React.Component {
   exibirMusicasFavoritas = () => {
     const { listaFavoritas } = this.state;
     return listaFavoritas.map((item) => (
-      <div key={ item.trackId }>
+      <div className={ styles.FavoritesList } key={ item.trackId }>
+        <hr />
         <MusicCardFav
           capaDisco={ item.artworkUrl30 }
           nomeMusica={ item.trackName }
@@ -50,11 +52,11 @@ class Favorites extends React.Component {
   render() {
     const { loading } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div className={ styles.back } data-testid="page-favorites">
         <Header />
-        {loading ? <Carregando />
+        {loading ? <div className={ styles.loading }><Carregando /></div>
           : (
-            <div>
+            <div className={ styles.container }>
               <ul>
                 {this.exibirMusicasFavoritas()}
               </ul>

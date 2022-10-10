@@ -1,0 +1,82 @@
+.container {
+  align-items: center;
+  background-color: #F0F2F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
+  width: 30%;
+}
+
+.form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  width: 100%;
+}
+
+.form label {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 100%;
+}
+
+.form input, textarea {
+  background-color: rgba(128, 128, 128, 0.057);
+  border: 0.5px solid rgba(0, 0, 0, 0.297);
+  border-left: none;
+  border-radius: 5px;
+  border-right: none;
+  border-top: none;
+  font-family: Cormorant SC , serif;
+  height: 40px;
+  margin-top: 10px;
+  outline: none;
+  padding: 20px 10px;
+  width: 100%;
+}
+
+.form textarea {
+  height: 100px;
+}
+
+.saveButton {
+  background-color: var(--accent);
+  border: 1px solid #e1e5eb;
+  border-radius: 5px;
+  color: var(--white);
+  font-family: Cormorant SC , serif;
+  font-size: 16px;
+  height: 40px;
+  margin: 30px;
+  padding: 08px 32px;
+  transition: 0.5s linear;
+}
+
+.saveButton:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.loading {
+  align-items: center;
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 100px;
+  padding: 50px;
+  width: 30%;
+}
+
+.back {
+  background-color: #F0F2F5;
+  height: 100vh;
+}

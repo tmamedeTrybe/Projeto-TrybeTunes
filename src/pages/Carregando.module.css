@@ -1,0 +1,8 @@
+.container {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  font-size: 1em;
+  justify-content: center;
+  text-align: center;
+}

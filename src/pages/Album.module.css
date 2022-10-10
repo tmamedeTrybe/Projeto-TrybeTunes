@@ -1,0 +1,64 @@
+.container {
+  align-items: space-around;
+  background-color: #F0F2F5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container h1 {
+  font-size: 45px;
+}
+
+.container p {
+  font-size: 20px;
+}
+
+.container hr {
+  color: rgba(0, 0, 0, 0.326);
+  width: 90%;
+}
+
+.albumInfos {
+  align-items: center;
+  animation: show 2s ease;
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+  height: 400px;
+  justify-content: space-around;
+  margin: 100px;
+  opacity: 1;
+  padding: 30px;
+  width: 45%;
+}
+
+.albumInfos img {
+  border-radius: 15px;
+  width: 200px;
+}
+
+@keyframes show {
+
+  0% {
+    opacity: 0;
+  }
+}
+
+.containerMusics {
+  margin: 100px;
+  width: 45%;
+}
+
+.loading {
+  align-items: space-around;
+  background-color: transparent;
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: row;
+  font-size: 30px;
+  justify-content: space-between;
+  margin: 400px;
+  padding: 30px;
+}

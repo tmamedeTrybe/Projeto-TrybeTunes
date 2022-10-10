@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
+import styles from './App.module.css';
 
 class App extends React.Component {
   constructor() {
@@ -24,7 +25,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={ styles.container }>
         <Switch>
           <Route exact path="/" component={ Login } />
           <Route exact path="/search" component={ Search } />

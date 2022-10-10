@@ -1,0 +1,77 @@
+.musics {
+  align-items: center;
+  animation: slide 1s ease;
+  color: var(--dark-green);
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 20px;
+  justify-content: space-between;
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+@keyframes slide {
+
+  0% {
+    transform: translateX(-30px);
+  }
+}
+
+.musics p {
+  margin: 20px;
+  width: 20%;
+}
+
+.musics label {
+  margin: 20px;
+  width: 10%;
+}
+
+.musics img {
+  border-radius: 50%;
+  margin: 10px;
+  width: 60px;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  background-color: white;
+  height: 10px;
+  outline: none;
+  position: relative;
+  transform: rotate(45deg);
+  width: 10px;
+}
+
+.checkbox:before {
+  background-color: white;
+  border-radius: 75% 75% 0 0;
+  content: '';
+  height: 60%;
+  position: absolute;
+  top: -59%;
+  width: 100%;
+}
+
+.checkbox:after {
+  background-color: white;
+  border-radius: 75% 75% 0 0;
+  content: '';
+  height: 60%;
+  position: absolute;
+  right: 79%;
+  top: 20%;
+  transform: rotate(-90deg);
+  width: 100%;
+}
+
+.checkbox:checked, .checkbox:checked:after, .checkbox:checked:before {
+  background-color: red;
+}
+
+.loading {
+  color: var(--dark-green);
+  font-size: 22px;
+  padding: 50px;
+}

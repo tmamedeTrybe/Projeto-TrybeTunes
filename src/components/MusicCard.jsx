@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
+import styles from './MusicCard.module.css';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -45,9 +46,9 @@ coletaCheck = ({ target }) => {
 render() {
   const { loading, favorita } = this.state;
   const { nomeMusica, audioMusica, trackId } = this.props;
-  return (loading ? <Carregando />
+  return (loading ? <section className={ styles.loading }><Carregando /></section>
     : (
-      <div>
+      <div className={ styles.musics }>
         <p>{nomeMusica}</p>
         <audio data-testid="audio-component" src={ audioMusica } controls>
           <track kind="captions" />
@@ -57,8 +58,8 @@ render() {
           .
         </audio>
         <label htmlFor={ trackId }>
-          Favorita
           <input
+            className={ styles.checkbox }
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
             checked={ favorita }

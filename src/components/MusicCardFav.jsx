@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { removeSong } from '../services/favoriteSongsAPI';
 import Carregando from '../pages/Carregando';
+import styles from './MusicCardFav.module.css';
 
 class MusicCardFav extends React.Component {
   constructor() {
@@ -30,21 +31,20 @@ class MusicCardFav extends React.Component {
     const { favorita, loading } = this.state;
     return (
       <div>
-        {loading ? <Carregando />
+        {loading ? <section className={ styles.loading }><Carregando /></section>
           : (
-            <li key={ trackId }>
+            <li className={ styles.musics } key={ trackId }>
               <img src={ capaDisco } alt="capa" />
               <p>{nomeMusica}</p>
               <audio data-testid="audio-component" src={ audioMusica } controls>
                 <track kind="captions" />
                 O seu navegador não suporta o elemento
-                {' '}
                 <code>audio</code>
                 .
               </audio>
               <label htmlFor={ trackId }>
-                Favorita
                 <input
+                  className={ styles.checkbox }
                   data-testid={ `checkbox-music-${trackId}` }
                   type="checkbox"
                   checked={ favorita }

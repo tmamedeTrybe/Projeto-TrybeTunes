@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './Carregando.module.css';
 
 class Carregando extends React.Component {
   render() {
     return (
-      <div>
+      <div className={ styles.container }>
         <span> Carregando... </span>
       </div>
     );

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import Carregando from './Carregando';
 import MusicCard from '../components/MusicCard';
+import styles from './Album.module.css';
 
 class Album extends React.Component {
   constructor() {
@@ -31,6 +32,7 @@ class Album extends React.Component {
     const apenasMusicas = param.filter((item, index) => index !== 0);
     return apenasMusicas.map((item) => (
       <div key={ item.trackId }>
+        <hr />
         <MusicCard
           nomeMusica={ item.trackName }
           audioMusica={ item.previewUrl }
@@ -47,14 +49,15 @@ class Album extends React.Component {
       <div data-testid="page-album">
         <Header />
         {musicas.length === 0
-          ? <Carregando />
+          ? <div className={ styles.loading }><Carregando /></div>
           : (
-            <div>
-              <section>
+            <div className={ styles.container }>
+              <section className={ styles.albumInfos }>
+                <img alt="capa do album" src={ musicas[0].artworkUrl100 } />
                 <h1 data-testid="artist-name">{musicas[0].artistName}</h1>
                 <p data-testid="album-name">{musicas[0].collectionName}</p>
               </section>
-              <section>
+              <section className={ styles.containerMusics }>
                 {this.exibirMusicas(musicas)}
               </section>
             </div>

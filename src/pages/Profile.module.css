@@ -1,0 +1,82 @@
+.container {
+  align-items: flex-start;
+  animation: show 1.5s linear;
+  background-color: #F0F2F5;
+  border: 1px solid rgba(0, 0, 0, 0.133);
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: row;
+  height: 550px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
+  width: 40%;
+}
+
+@keyframes show {
+
+  0% {
+    opacity: 0;
+  }
+}
+
+.container img {
+  border-radius: 50%;
+  width: 70%;
+}
+
+.container input {
+  font-family: Cormorant SC , serif;
+}
+
+.infos section {
+  margin-bottom: 50px;
+}
+
+.name h3, .email h3, .description h3 {
+  font-weight: 800;
+}
+
+.EditButton {
+  background-color: var(--accent);
+  border: 1px solid #e1e5eb;
+  border-radius: 5px;
+  color: var(--white);
+  font-family: Cormorant SC , serif;
+  font-size: 16px;
+  height: 40px;
+  margin: 30px;
+  padding: 08px 32px;
+  transition: 0.5s linear;
+}
+
+.EditButton:hover {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.loading {
+  align-items: flex-start;
+  background-color: #F0F2F5;
+  border: 1px solid rgba(0, 0, 0, 0.133);
+  border-radius: 25px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  color: var(--dark-green);
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  height: 550px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 50px;
+  padding: 50px;
+  width: 40%;
+}
+
+.back {
+  background-color: #F0F2F5;
+  height: 100vh;
+}

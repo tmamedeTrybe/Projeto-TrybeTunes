@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Carregando from './Carregando';
+import logoTrybetunes from '../images/logoTrybetunes.svg';
+import styles from './Login.module.css';
 
 class Login extends React.Component {
   constructor() {
@@ -42,25 +44,29 @@ class Login extends React.Component {
     }
     return (loading ? <Carregando />
       : (
-        <div data-testid="page-login">
-          <label htmlFor="login">
-            Nome
+        <div className={ styles.container } data-testid="page-login">
+          <section className={ styles.logo }>
+            <img alt="logo" src={ logoTrybetunes } />
+          </section>
+          <form>
             <input
+              placeholder="Nome"
               data-testid="login-name-input"
               type="text"
               value={ login }
               name="login"
               onChange={ this.coletaDados }
             />
-          </label>
-          <button
-            data-testid="login-submit-button"
-            type="button"
-            onClick={ this.salvarNome }
-            disabled={ this.validarNome() }
-          >
-            Entrar
-          </button>
+            <button
+              data-testid="login-submit-button"
+              type="button"
+              onClick={ this.salvarNome }
+              disabled={ this.validarNome() }
+            >
+              Entrar
+            </button>
+          </form>
+
         </div>
       )
     );
