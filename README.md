@@ -42,7 +42,7 @@ O desafio deste projeto era criar uma aplicação capaz de reproduzir músicas d
 Clone o repositório em uma pasta de preferência
 
 ```
-git@github.com:tmamedeTrybe/TrybeTunes.git
+git@github.com:tmamedeTrybe/Projeto-TrybeTunes.git
 ```
 
 Entre na pasta que você acabou de clonar, e instale as dependencias
